@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/shared/utils/getDB";
 import { ObjectId } from "mongodb";
+export const dynamic = "force-dynamic";
 
 export async function DELETE(request: NextRequest) {
   try {

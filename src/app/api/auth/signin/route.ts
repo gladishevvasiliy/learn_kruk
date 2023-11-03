@@ -4,6 +4,7 @@ import { ObjectId } from "mongodb";
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 import { isEmailValid } from '@/shared/utils/isEmailValid'
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {

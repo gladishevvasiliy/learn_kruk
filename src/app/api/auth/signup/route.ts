@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDB } from "@/shared/utils/getDB";
 const bcrypt = require("bcryptjs");
 import { isEmailValid } from '@/shared/utils/isEmailValid'
+export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
   try {
