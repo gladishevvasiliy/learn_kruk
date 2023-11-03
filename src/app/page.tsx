@@ -23,8 +23,6 @@ export default memo(function Home() {
       setAuthenticated(false);
     }
   }, [setAuthenticated]);
-  console.log(id);
-  console.log(token);
 
   if (isAuthenticated === false) {
     redirect("/auth/login");

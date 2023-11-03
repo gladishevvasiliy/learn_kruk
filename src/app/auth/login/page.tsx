@@ -30,7 +30,7 @@ export default function AuthForm() {
   const onSubmit: SubmitHandler<LoginInput> = async (dataLog) => {
     try {
       const response: any = await addLogin(dataLog).unwrap();
-      console.log(response.token);
+
       localStorage.setItem("token", response.token);
       localStorage.setItem("userId", response.userId);
       console.log("Login successful");

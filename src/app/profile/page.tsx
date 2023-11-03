@@ -1,6 +1,7 @@
 "use client";
 
 import { UserStatistics } from "@/features/userStatistics";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export type StatisticsType = {
@@ -11,6 +12,8 @@ export type StatisticsType = {
   errorAnswers: number;
 };
 export default function Profile() {
+  const params = useParams()
+
   const [userId, setUserId] = useState<string>("");
 
   useEffect(() => {

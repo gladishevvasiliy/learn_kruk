@@ -35,8 +35,6 @@ export default function UsersList() {
 
   })
 
-  console.log({ usersRating })
-
   return (
     <>
       {usersRating && (

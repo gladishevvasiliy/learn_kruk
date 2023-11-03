@@ -30,6 +30,7 @@ type LinksType = {
 export default function NavMenu({ stateMenu, setStateMenu }: Props) {
   const [data, setData] = useState<LinksType[]>();
   const { token, userId } = useAuth();
+
   useEffect(() => {
     setData([
       {
