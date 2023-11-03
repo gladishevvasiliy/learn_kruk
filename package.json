@@ -41,7 +41,8 @@
     "typescript": "5.2.2",
     "ui-kit-storybook": "^0.0.0",
     "use-sound": "^4.0.1",
-    "mongodb": "6.2.0"
+    "mongodb": "6.2.0",
+    "@hookform/resolvers": "3.3.2"
   },
   "devDependencies": {
     "@swc/plugin-styled-components": "^1.5.83",
