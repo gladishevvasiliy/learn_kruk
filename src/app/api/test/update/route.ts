@@ -6,7 +6,9 @@ export const dynamic = "force-dynamic";
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
-    const { questions, icon, description, name, id } = body;
+    const searchParams = request.nextUrl.searchParams
+    const id = String(searchParams.get('id'))
+    const { questions, icon, description, name } = body;
 
     const db = await getDB()
     const result = await db.collection('tests').findOneAndReplace(
