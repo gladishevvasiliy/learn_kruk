@@ -9,7 +9,7 @@ import {
   None,
   Znamya,
 } from "./style";
-import { QuestionType } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
+import { AnswerType, QuestionType } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
 import { useRef, useState } from "react";
 import { AnswerOption } from "@/features/answerOptions";
 import { useActions } from "@/redux/hooks/useActions";
@@ -21,9 +21,11 @@ interface Props {
   numberQuestions: number;
   questionTestId: number;
   setQuestionTestId: (questionTestId: number) => void;
+  answers: AnswerType[]
 }
 
 export default function Questions({
+  answers,
   currentQuestion,
   numberQuestions,
   questionTestId,
@@ -61,7 +63,7 @@ export default function Questions({
         isCorrectAnswer={correctAnswerId === answerId}
       />
       <ContainerQ>
-        {currentQuestion.answers.map((e) => {
+        {answers.map((e) => {
           return (
             <AnswerOption
               key={e.id}

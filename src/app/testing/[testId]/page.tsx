@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getCurrentTest } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/fakeAPI";
 import { type } from "os";
 import {
+  AnswerType,
   QuestionType,
   TestType,
 } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
@@ -13,6 +14,7 @@ import { useGetCurrentTestQuery, useGetTestsQuery } from "@/redux/api/testApi";
 import { ITest } from "@/redux/api/types";
 import { useAddTestStatisticsMutation } from "@/redux/api/userApi";
 import { useAppSelector } from "@/redux/hooks/hooks";
+import { shuffle } from "@/shared/utils/shuffle";
 
 interface Props {
   params: {
@@ -67,9 +69,13 @@ export default function Test({ params: { testId } }: Props) {
     router,
     testId,
   ]);
+
+  const shuffledAnswers = shuffle<AnswerType>(currentQuestion?.answers || [])
+
   if (currentTest && currentQuestion)
     return (
       <Questions
+        answers={shuffledAnswers}
         numberQuestions={currentTest.questions.length}
         questionTestId={questionTestId}
         currentQuestion={currentQuestion}
