@@ -1,16 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
-import { getCurrentTest } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/fakeAPI";
-import { type } from "os";
+import { useEffect, useMemo, useState } from "react";
 import {
   AnswerType,
   QuestionType,
-  TestType,
 } from "@/shared/ui/BurgerButton/api/testsData/fakeApi/testsData";
 import Questions from "@/widgets/Questions";
 import { useActions } from "@/redux/hooks/useActions";
 import { useRouter } from "next/navigation";
-import { useGetCurrentTestQuery, useGetTestsQuery } from "@/redux/api/testApi";
+import { useGetCurrentTestQuery } from "@/redux/api/testApi";
 import { ITest } from "@/redux/api/types";
 import { useAddTestStatisticsMutation } from "@/redux/api/userApi";
 import { useAppSelector } from "@/redux/hooks/hooks";
@@ -70,7 +67,7 @@ export default function Test({ params: { testId } }: Props) {
     testId,
   ]);
 
-  const shuffledAnswers = shuffle<AnswerType>(currentQuestion?.answers || [])
+  const shuffledAnswers = useMemo(() => shuffle<AnswerType>(currentQuestion?.answers || []), [currentQuestion?.answers])
 
   if (currentTest && currentQuestion)
     return (
